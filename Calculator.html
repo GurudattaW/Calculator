@@ -1,0 +1,411 @@
+<html>
+<head>
+</head>
+<body>
+<style>
+</style>
+<table style="text-align:center;" align="center"  border=8 >	
+		<tr>
+			<td><input type="reset" value="C" style="height:40px;width:50px" onclick="reset()"></td>
+			<td colspan="3"><output type="textbox" id="viewer" class="viewer" style="height:40px;width:50px">0</td>
+		</tr>
+	<div>
+		<tr>
+			<td><input type="button" style="height:40px;width:50px" id="button" onclick="abc(this)" value="7"></td>
+			<td><input type="button" id="button" style="height:40px;width:50px" onclick="abc(this)" value="8"></td>
+			<td><input type="button" id="button" onclick="abc(this)" style="height:40px;width:50px" value="9"></td>
+			<td><input type="button" id="add" onclick="add(this)" style="height:40px;width:50px" value="+"></td>
+		</tr>
+	</div>
+	<div>
+		<tr>
+			<td><input type="button" id="button" style="height:40px;width:50px" onclick="abc(this)" value="4"></td>
+			<td><input type="button" id="button" onclick="abc(this)" style="height:40px;width:50px" value="5"></td>
+			<td><input type="button" id="button" onclick="abc(this)" style="height:40px;width:50px" value="6"></td>
+			<td><input type="button" id="minus" style="height:40px;width:50px" onclick="minus(this)" value="-"></td>
+		</tr>
+	</div>
+	<div>
+		<tr>
+			<td><input type="button" id="button" style="height:40px;width:50px" onclick="abc(this)" value="1"></td>
+			<td><input type="button" style="height:40px;width:50px" id="button" onclick="abc(this)" value="2"></td>
+			<td><input type="button" id="button" style="height:40px;width:50px" onclick="abc(this)" value="3"></td>
+			<td><input type="button" id="multiply"  style="height:40px;width:50px" onclick="multiply(this)" value="*"></td>
+		</tr>
+	</div>
+	<div>
+		<tr>
+			<td><input type="button" id="button" style="height:40px;width:50px" onclick="abc(this)" value="0"></td>
+			<td><input type="button" id="button" style="height:40px;width:50px" onclick="abc(this)" value="."></td>
+			<td><input type="button" style="height:40px;width:50px" value=""></td>
+			<td><input type="button" id="div" style="height:40px;width:50px" onclick="divide(this)" value="/"></td>
+		</tr>
+	</div>
+		<tr>
+			<td colspan="2"></td>
+			<td colspan="2"><button id="result" style="height:40px;width:105px" onclick="result(this)" value="="/>=</td>
+		</tr>
+</table>
+</body>
+</html>
+<script> 
+var firstNo="";
+var secondNo="";
+var total=""
+var operator="";
+function abc(button) 
+{
+	var x = button.value;
+	document.getElementById("viewer").value += x;
+}
+function reset()
+{
+	firstNo=""
+	secondNo=""
+	total=""
+	operator=""
+	document.getElementById("viewer").value="";
+}
+function minus()
+{
+	if(total==0)
+	{
+		if(operator)
+		{
+			secondNo=document.getElementById("viewer").value
+				if(operator=='*')
+				{
+					total=firstNo * secondNo
+				}
+				else if(operator=='-')
+				{
+					total=firstNo - secondNo
+				}
+				else if(operator=='+')
+				{
+					total=parseInt(firstNo) + parseInt(secondNo)
+				}
+				else if(operator=='/')
+				{
+					total=firstNo / secondNo
+				}
+		}
+	}
+	if(total==0)
+	{
+		if(secondNo==0)
+		{
+			if(firstNo==0)
+			{
+				firstNo= document.getElementById("viewer").value;
+			}
+			else
+			{
+				var currentValue = document.getElementById("viewer").value;
+				firstNo=firstNo - currentValue
+			}
+			var ac=document.getElementById("viewer").value=""
+			operator=document.getElementById("minus").value
+		}
+		else
+		{
+			firstNo=firstNo - secondNo
+			var ac=document.getElementById("viewer").value=""
+			operator=document.getElementById("minus").value
+		}
+	}
+	else
+	{
+		if(firstNo==0)
+		{
+			firstNo=total
+		}
+		if(operator)
+		{
+			secondNo=document.getElementById("viewer").value
+			if(operator=='*')
+			{
+				total=firstNo * secondNo
+			}
+			else if(operator=='-')
+			{
+				total=firstNo - secondNo
+			}
+			else if(operator=='+')
+			{
+				total=parseInt(firstNo) + parseInt(secondNo)
+			}
+			else if(operator=='/')
+			{
+				total=firstNo / secondNo
+			}
+		}
+		firstNo=total
+		var ac=document.getElementById("viewer").value=""
+		operator=document.getElementById("minus").value
+		secondNo==""
+	}
+}
+function multiply()
+{
+	if(total==0)
+	{
+		if(operator)
+		{
+			secondNo=document.getElementById("viewer").value
+			if(operator=='*')
+			{
+				total=firstNo * secondNo
+			}
+			else if(operator=='-')
+			{
+				total=firstNo - secondNo
+			}
+			else if(operator=='+')
+			{
+				total=parseInt(firstNo) + parseInt(secondNo)
+			}
+			else if(operator=='/')
+			{
+				total=firstNo / secondNo
+			}
+		}
+	}
+	if(total==0)
+	{
+		if(secondNo==0)
+		{
+			if(firstNo==0)
+			{
+				firstNo= document.getElementById("viewer").value;
+			}
+			else
+			{
+				var currentValue = document.getElementById("viewer").value;
+				firstNo=firstNo * currentValue
+			}
+			var ac=document.getElementById("viewer").value=""
+			operator=document.getElementById("multiply").value
+		}
+		else
+		{
+			firstNo=firstNo * secondNo
+			var ac=document.getElementById("viewer").value=""
+			operator=document.getElementById("multiply").value
+		}
+	}
+	else
+	{
+		if(firstNo==0)
+		{
+			firstNo=total
+		}
+		if(operator)
+		{
+			secondNo=document.getElementById("viewer").value
+			if(operator=='*')
+			{
+				total=firstNo * secondNo
+			}
+			else if(operator=='-')
+			{
+				total=firstNo - secondNo
+			}
+			else if(operator=='+')
+			{
+				total=parseInt(firstNo) + parseInt(secondNo)
+			}
+			else if(operator=='/')
+			{
+				total=firstNo / secondNo
+			}
+		}
+		firstNo=total
+		var ac=document.getElementById("viewer").value=""
+		operator=document.getElementById("multiply").value
+	}
+}
+function divide()
+{
+	if(total==0)
+	{
+		if(operator)
+		{
+			secondNo=document.getElementById("viewer").value
+			if(operator=='*')
+			{
+				total=firstNo * secondNo
+			}
+			else if(operator=='-')
+			{
+				total=firstNo - secondNo
+			}
+			else if(operator=='+')
+			{
+				total=parseInt(firstNo) + parseInt(secondNo)
+			}
+			else if(operator=='/')
+			{
+				total=firstNo / secondNo
+			}
+		}
+	}
+	if(total==0)
+	{
+		if(secondNo==0)
+		{
+			if(firstNo==0)
+			{
+				firstNo= document.getElementById("viewer").value;
+			}
+			else
+			{
+				var currentValue = document.getElementById("viewer").value;
+				firstNo=firstNo / currentValue
+			}
+			var ac=document.getElementById("viewer").value=""
+			operator=document.getElementById("div").value
+		}
+		else
+		{
+			firstNo=parseInt(firstNo) + parseInt(secondNo)
+			var ac=document.getElementById("viewer").value=""
+			operator=document.getElementById("div").value
+		}
+	}
+	else
+	{
+		if(firstNo==0)
+		{
+			firstNo=total
+		}
+		if(operator)
+		{
+			secondNo=document.getElementById("viewer").value
+			if(operator=='*')
+			{
+				total=firstNo * secondNo
+			}
+			else if(operator=='-')
+			{
+				total=firstNo - secondNo
+			}
+			else if(operator=='+')
+			{
+				total=parseInt(firstNo) + parseInt(secondNo)
+			}
+			else if(operator=='/')
+			{
+				total=firstNo / secondNo
+			}
+		}
+		firstNo=total
+		var ac=document.getElementById("viewer").value=""
+		operator=document.getElementById("div").value
+	}
+}
+function add()
+{
+	if(total==0)
+	{
+		if(operator)
+		{
+			secondNo=document.getElementById("viewer").value
+			if(operator=='*')
+			{
+				total=firstNo * secondNo
+			}
+			else if(operator=='-')
+			{
+				total=firstNo - secondNo
+			}
+			else if(operator=='+')
+			{
+				total=parseInt(firstNo) + parseInt(secondNo)
+			}
+			else if(operator=='/')
+			{
+				total=firstNo / secondNo
+			}
+		}
+	}
+	if(total==0)
+	{
+		if(secondNo==0)
+		{
+			if(firstNo==0)
+			{
+				firstNo= document.getElementById("viewer").value;
+			}
+			else
+			{
+				var currentValue = document.getElementById("viewer").value;
+				firstNo=parseInt(firstNo) + parseInt(currentValue)
+			}
+			var ac=document.getElementById("viewer").value=""
+			operator=document.getElementById("add").value
+		}
+		else
+		{
+			firstNo=parseInt(firstNo) + parseInt(secondNo)
+			var ac=document.getElementById("viewer").value=""
+			operator=document.getElementById("add").value
+		}
+	}
+	else
+	{
+		if(firstNo==0)
+		{
+			firstNo=total
+		}
+		if(operator)
+		{
+			secondNo=document.getElementById("viewer").value
+			if(operator=='*')
+			{
+				total=firstNo * secondNo
+			}
+			else if(operator=='-')
+			{
+				total=firstNo - secondNo
+			}
+			else if(operator=='+')
+			{
+				total=parseInt(firstNo) + parseInt(secondNo)
+			}
+			else if(operator=='/')
+			{
+				total=firstNo / secondNo
+			}
+		}
+		firstNo=total
+		var ac=document.getElementById("viewer").value=""
+		operator=document.getElementById("add").value
+		secondNo==""
+	}
+}
+function result()
+{
+	secondNo=document.getElementById("viewer").value
+	if(operator=='*')
+	{
+		total=firstNo * secondNo
+	}
+	else if(operator=='-')
+	{
+		total=firstNo - secondNo
+	}
+	else if(operator=='+')
+	{
+		total=parseInt(firstNo) + parseInt(secondNo)
+	}
+	else if(operator=='/')
+	{
+		total=firstNo / secondNo
+	}
+	document.getElementById("viewer").value=total
+	secondNo=""
+	firstNo=""
+	operator=""
+}
+</script>
